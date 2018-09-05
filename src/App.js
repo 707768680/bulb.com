@@ -5,7 +5,7 @@ import { BrowserRouter, Link ,NavLink} from "react-router-dom";
 import Route from 'react-router-dom/Route';
 // import  { Provider } from 'react-redux';
 // import store from './store.js'
-
+import { Redirect } from 'react-router-dom';
 
 import Header from './components/index/header.jsx'
 import Content from './components/index/content.jsx'
@@ -56,7 +56,7 @@ class App extends Component {
            {/* <Route exact path="/" component={Header} />  */}
            {/* <Route exact path="/" component={Footer} /> */}
 
-           <Route exact path="/" component={Content} onEnter={this.lunbotuinit} />
+           <Route exact path="/" component={Content}  />
            <Route path="/rank" component={Rank}  /> 
            <Route path="/friends" component={Friends} />          
            <Route path="/login" component={Login} />          
@@ -69,7 +69,7 @@ class App extends Component {
            <Route path="/aihao" component={Aihao} />    
            <Route path="/qita" component={Qita} />    
            <Route path="/person" component={Person} />    
-           
+           <Redirect path="/" to={{pathname: '/'}} />
 
 
            <Footer></Footer>

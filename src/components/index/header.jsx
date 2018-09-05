@@ -66,7 +66,7 @@ class Home extends React.Component {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="rank" >
+                  <Link className="nav-link" to="/rank" >
                     亮度榜
                   </Link>
                 </li>

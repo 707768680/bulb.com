@@ -1,10 +1,57 @@
 import React from "react";
 import scssObj from "../../App.scss";
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createPost } from '../../Redux/actions/action.js';
 
 class Start extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      class: '科技',
+      think: '',
+      plan:''
+    }
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
   componentDidMount() {
     // 解决跳转到此页面时,滚动条不在最顶端
     document.getElementById("startTrip").scrollIntoView(true);
+  }
+  onChange(e){
+    this.setState({ [e.target.name]: e.target.value });
+    console.log("change")
+  }
+  onSubmit(e){
+    e.preventDefault();
+    const post = {
+      class: this.state.class,
+      title: this.state.think,
+      body: this.state.plan,
+    };
+    console.log(this.state)
+    this.props.createPost(post);
+    switch(this.refs.select.value){
+      case "科技" :
+      this.props.history.push('/keji') ;
+      break;
+      case "爱好" :
+      this.props.history.push('/aihao') ;
+      break;
+      case "生活" :
+      this.props.history.push('/shenghuo') ;
+      break;
+      case "娱乐" :
+      this.props.history.push('/yule') ;
+      break;
+      case "其他" :
+      this.props.history.push('/qita') ;
+      break;
+    }
+    this.refs.select.value
+    
+    
   }
   render() {
     return (
@@ -63,11 +110,10 @@ class Start extends React.Component {
           </div>
         </div>
         <div className={scssObj.doform}>
-        <form>
+        <form onSubmit={this.onSubmit}>
            <div className="form-group">
              <label htmlFor="exampleFormControlSelect1">选择分类</label>
-             <select className="form-control" id="exampleFormControlSelect1">
-               <option>综合</option>
+             <select onChange={this.onChange} name="class" className="form-control" id="exampleFormControlSelect1" ref="select">
                <option>科技</option>
                <option>生活</option>
                <option>娱乐</option>
@@ -75,10 +121,10 @@ class Start extends React.Component {
                <option>其他</option>
              </select>
            </div>
-           <input className="form-control" type="text" placeholder="概括你的想法" />
+           <input onChange={this.onChange} name="think" className="form-control" type="text" placeholder="概括你的想法" />
            <div className="form-group">
              <label htmlFor="exampleFormControlTextarea1">详细说明</label>
-             <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+             <textarea onChange={this.onChange} name="plan" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
            </div>
            <button type="submit" className="btn btn-primary mb-2">发布</button>
          </form>
@@ -87,5 +133,14 @@ class Start extends React.Component {
     );
   }
 }
+// Start.propTypes = {
+//   fetchPosts: PropTypes.func.isRequired,
+//   posts: PropTypes.array.isRequired
+// }
 
-export default Start;
+// Start.propTypes = {
+//   fetchPosts: PropTypes.func.isRequired,
+//   posts: PropTypes.array.isRequired
+// }
+
+export default connect(null, {createPost})(Start); 

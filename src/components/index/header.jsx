@@ -58,12 +58,12 @@ class Home extends React.Component {
               <h1 className={ scssObj.brand }>bulb</h1>   
               <ul className= { scssObj.navUl + " navbar-nav mr-auto"}>
               {/* <Link to="/"><img src={ require('../../images/51miz-E370681-A04BFB812.png') } alt="" className={ scssObj.logo} /></Link>  */}
-              <a href="/"><img src={ require('../../images/51miz-E370681-A04BFB812.png') } alt="" className={ scssObj.logo} /></a> 
+              <Link to="/"><img src={ require('../../images/51miz-E370681-A04BFB812.png') } alt="" className={ scssObj.logo} /></Link> 
                 <li className="nav-item ">
-                  <a className="nav-link" href="/" >
+                  <Link className="nav-link" to="/" >
                   
                     灯泡网 <span className="sr-only">(current)</span>
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/rank" >

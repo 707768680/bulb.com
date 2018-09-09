@@ -1,6 +1,6 @@
-// import { combineReducers } from 'redux';
-// import reducer from './reducer.js';
+import { combineReducers } from 'redux';
+import reducer from './reducer.js';
 
-// export default combineReducers({
-//     login: reducer
-// })
+export default combineReducers({
+    posts:reducer
+})

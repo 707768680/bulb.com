@@ -3,8 +3,11 @@ import { BrowserRouter, Link ,NavLink} from "react-router-dom";
 // import logo from './logo.svg';
 // import scssObj from "./App.scss";
 import Route from 'react-router-dom/Route';
-// import  { Provider } from 'react-redux';
-// import store from './store.js'
+
+import  { Provider } from 'react-redux';
+import store from './store.js'
+
+
 import { Redirect } from 'react-router-dom';
 
 import Header from './components/index/header.jsx'
@@ -42,7 +45,7 @@ class App extends Component {
       //     To get started, edit <code>src/App.js</code> and save to reload.
       //   </p>
       // </div>
-      // <Provider store={store}>    
+      <Provider store={store}>    
     
       <BrowserRouter>
         <div>
@@ -69,13 +72,13 @@ class App extends Component {
            <Route path="/aihao" component={Aihao} />    
            <Route path="/qita" component={Qita} />    
            <Route path="/person" component={Person} />    
-           <Redirect path="/" to={{pathname: '/'}} />
+           {/* <Redirect path="/" to={{pathname: '/'}} /> */}
 
 
            <Footer></Footer>
         </div>
       </BrowserRouter>
-      //  </Provider>
+     </Provider>
     );
   }
   

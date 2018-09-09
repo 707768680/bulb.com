@@ -1,51 +1,40 @@
 import React from "react";
 import scssObj from "../../App.scss";
 import {Link} from "react-router-dom"
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { fetchPosts } from '../../Redux/actions/action.js';
 
 class Keji extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state = {
-      items:[],
-      // sign:false
-    }
-  }
-    componentDidMount = () => {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     items:[],
+  //     // sign:false
+  //   }
+  // }
+    componentDidMount (){
         // 解决跳转到此页面时,滚动条不在最顶端
         document.getElementById("keji").scrollIntoView(true);
-        fetch('https://jsonplaceholder.typicode.com/posts')
-        .then(response => response.json())
-        .then(json => this.setState({items:json})  )
-          
-          // let items = [];
-          // items = items.concat(this.state.items);
-          // items = json;
-
-          // arr = json;
-          // this.setState({items:json})
-          // this.setState({sign:true})
-      
-          // console.log(this.state.items)
-         
-       
-        // .then(console.log(this.state.items))
-        // this.setState({items:json})
-        // console.log(this.state.geti)
+        // fetch('https://jsonplaceholder.typicode.com/posts')
+        // .then(response => response.json())
+        // .then(json => this.setState({items:json})  )
+        this.props.fetchPosts();
+    }
+    componentWillReceiveProps(nextProps){
+      if (nextProps.newPost) {
+        this.props.posts.unshift(nextProps.newPost);
+        console.log(nextProps.newPost + "收到数据,推入数组1")
+      }
     }
     render(){
-      // const item = this.state.items.map(post => {
-      //   <div className="col-7">
-      //   <div className={scssObj.kejiList}>
-      //   <div className="jumbotron jumbotron-fluid">
-      //     <div className="container">
-      //       <h3 className="display-4">{post.title}</h3>
-      //       <p className="lead">{post.body}</p>
-      //       <p>666</p>
-      //     </div>
-      //   </div>
-      //   </div>
-      //   </div>
-      // })
+     const postItems = this.props.posts.map(post => {
+        return(
+         <div className={scssObj.item + " container"} key={post.id}>
+           <h5 className="display-4">{post.title}</h5>
+           <p className="lead">{post.body}</p>
+         </div>
+          )})
         return(
             // !this.state.sign? 'loading' : (
             <div className={scssObj.classlistLayout} id="keji">
@@ -66,13 +55,14 @@ class Keji extends React.Component{
                  <div className="col-7">
                  <div className={scssObj.kejiList}>
                  <div className="jumbotron jumbotron-fluid">
-                 {this.state.items.map(item => {
+                 {/* {this.state.items.map(item => {
                   return(
                    <div className={scssObj.item + " container"} key={item.id}>
                      <h5 className="display-4">{item.title}</h5>
                      <p className="lead">{item.body}</p>
                    </div>
-                    )})   }   
+                    )})   }    */}
+                    {postItems}
                  </div>
                  </div>
                  </div>
@@ -102,4 +92,14 @@ class Keji extends React.Component{
     }
 }
 
-export default Keji;
+// Keji.propTypes = {
+//   fetchPosts: PropTypes.func.isRequired,
+//   posts: PropTypes.array.isRequired
+// }
+
+const mapStateToProps = state => ({
+    posts: state.posts.items,
+    newPost: state.posts.item
+})
+
+export default connect(mapStateToProps, {fetchPosts})(Keji);

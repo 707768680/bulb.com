@@ -1,7 +1,36 @@
-// import { LOGIN } from './types';
-// export const login = () => dispatch =>{
-//     dispatch({
-//         type:LOGIN
-        
-//     })
-// }
+import { NEW_POST,FETCH_POSTS } from './types';
+
+export const fetchPosts = () => dispatch => {
+  fetch("https://jsonplaceholder.typicode.com/posts")
+    .then(res => res.json())
+    .then(posts =>
+      dispatch({
+        type: FETCH_POSTS,
+        payload: posts
+      })
+    )
+}
+export const createPost = postData => dispatch => {
+  
+    console.log("createPost");
+    fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
+      body: JSON.stringify(postData)
+    })
+      .then(res => res.json())
+      .then(post =>
+        dispatch({
+          type: NEW_POST,
+          payload: post,
+        })    
+    // console.log(post) 
+      )
+      // .then(
+      //   console.log(post)
+      // )
+  
+  }

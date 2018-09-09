@@ -21,7 +21,7 @@ class Rank extends React.Component{
         //    <h5 className="display-4">{post.title}</h5>
         //    <p className="lead">{post.body}</p>
         //  </div>
-        <div className={scssObj.rows + " row"}>
+        <div className={scssObj.rows + " row"} key={post.id}>
         <div className={scssObj.rowleft + " col-sm-9"}>
           <p>{post.body}</p>
         </div>

@@ -32,7 +32,7 @@
         margin-right: 5px;
     }
     .buttons{
-        margin-left: 20px;
+        margin-left: 10px;
         button{
             margin-left: 5px;
         }
@@ -48,14 +48,22 @@
     .person:hover{
         opacity:0.8;
     }
-    .exit{
-        margin-left: 20px;
-        color: #fff;
-        opacity:0.5;
-        display: none;
-    }
+    // .exit{
+    //     // margin-left: 20px;
+    //     // color: #fff;
+    //     // opacity:0.5;
+    //     // display: none;
+    // }
     .exit:hover{
         opacity:0.8;
+    }
+    .dropdown{
+        display: none!important;
+        
+        
+    }
+    .search{
+        margin-right: 10px;
     }
 }
 .content{

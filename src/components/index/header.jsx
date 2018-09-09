@@ -21,21 +21,15 @@ class Home extends React.Component {
   componentDidMount(){
     if(localStorage.remember == "TRUE" || sessionStorage.logined == "Y"){
       document.getElementById("loginbutton").style.display = "none";
-      document.getElementById("person").innerHTML = "个人中心";
+      document.getElementById("personspace").className = "dropdown show";
       document.getElementById("exit").style.display = "block";
     }
-    // if(sessionStorage.logined == "Y"){
-    //   // console.log("已登录");
-    //   // let loginedhtml = '<a href="#" style="color: #fff;opacity:0.5; ">个人中心</a>'
-    //   document.getElementById("loginbutton").style.display = "none";
-    //   document.getElementById("person").innerHTML = "个人中心";
-    //   document.getElementById("exit").style.display = "block";
-    // }
   }
   exitlogin(){
     sessionStorage.logined = "N";
     localStorage.remember = "";
     document.getElementById("exit").style.display = "none";
+    document.getElementById("personspace").style.display = "none";
     window.location.href = "/";
   }
   render() {
@@ -76,7 +70,7 @@ class Home extends React.Component {
                   </Link>
                 </li> */}
               </ul>
-              <form className="form-inline">
+              <form className={scssObj.search + " form-inline"}>
                 <input
                   className="form-control mr-sm-2"
                   type="search"
@@ -94,8 +88,38 @@ class Home extends React.Component {
                <Link to="/login"><button type="button" className="btn btn-secondary btn-sm">登录</button></Link>
                <Link to="/register"><button type="button" className="btn btn-secondary btn-sm">注册</button></Link>
               </div>
-               <Link to="/person" id="person" className={scssObj.person}></Link>
-               <a href="#" onClick={this.exitlogin} id="exit" className={scssObj.exit}>退出登录</a>
+               {/* <Link to="/person" id="person" className={scssObj.person}></Link> */}
+
+               {/* <div class={scssObj.dropdown + " dropdown show"} id="personspace">
+                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    个人空间
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="#">消息</a>
+                    <a class="dropdown-item" href="#">账号设置</a>
+                    <a class="dropdown-item" href="#">帮助</a>
+                  </div>
+                </div> */}
+
+                  <div className={scssObj.dropdown + " btn-group"} id="personspace">
+                 
+                  <button type="button" class="btn btn-secondary">个人空间</button>
+                  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span className="sr-only"></span>
+                    </button>
+                    <div className="dropdown-menu">
+                      <Link className="dropdown-item" to="/person">个人空间</Link>
+                      <a className="dropdown-item" href="#">消息</a>
+                      <a className="dropdown-item" href="#">账号设置</a>
+                      <a className="dropdown-item" href="#">帮助</a>                     
+                      <a className="dropdown-item" href="#" id="exit" onClick={this.exitlogin}>退出登录</a>                     
+                    </div>
+                  </div>
+
+           
+
+               {/* <a href="#" onClick={this.exitlogin} id="exit" className={scssObj.exit}>退出登录</a> */}
             </div>
           </div>
         </nav>

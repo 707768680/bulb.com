@@ -49,7 +49,7 @@ class Start extends React.Component {
       this.props.history.push('/qita') ;
       break;
     }
-    this.refs.select.value
+    // this.refs.select.value
     
     
   }

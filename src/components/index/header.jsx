@@ -1,16 +1,23 @@
 import React from "react";
 import scssObj from "../../App.scss";
 import {Link} from 'react-router-dom';
+import PropTypes from "prop-types";
+import history from '../../history.js';
+
 // import { connect } from 'react-redux';
 // import { status } from '../../Redux/actions/action.js';
 
 class Home extends React.Component {
-  constructor(props){
-    super(props)
+  constructor(props,context){
+    super(props,context)
     // this.state = {
     //   actived: 1
     // }  
+    this.linkPerson = this.linkPerson.bind(this);
   }
+  // static contextTypes = {
+  //   router: PropTypes.object
+  // }
   // componentWillReceiveProps(nextStatus){
   //   if(nextStatus){
   //     this.setState({
@@ -31,6 +38,11 @@ class Home extends React.Component {
     document.getElementById("exit").style.display = "none";
     document.getElementById("personspace").style.display = "none";
     window.location.href = "/";
+  }
+  linkPerson(){
+    // this.props.history.push('/person');
+    history.push("/person");
+
   }
   render() {
     return (
@@ -104,16 +116,16 @@ class Home extends React.Component {
 
                   <div className={scssObj.dropdown + " btn-group"} id="personspace">
                  
-                  <button type="button" class="btn btn-secondary">个人空间</button>
-                  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button type="button" className="btn btn-secondary" onClick={this.linkPerson}>个人空间</button>
+                  <button type="button" className="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <span className="sr-only"></span>
                     </button>
                     <div className="dropdown-menu">
                       <Link className="dropdown-item" to="/person">个人空间</Link>
-                      <a className="dropdown-item" href="#">消息</a>
-                      <a className="dropdown-item" href="#">账号设置</a>
-                      <a className="dropdown-item" href="#">帮助</a>                     
-                      <a className="dropdown-item" href="#" id="exit" onClick={this.exitlogin}>退出登录</a>                     
+                      <Link className="dropdown-item" to="/message">消息</Link>
+                      <Link className="dropdown-item" to="/set">账号设置</Link>
+                      <Link className="dropdown-item" to="/help">反馈</Link>                     
+                      <a className="dropdown-item" id="exit" onClick={this.exitlogin}>退出登录</a>                     
                     </div>
                   </div>
 

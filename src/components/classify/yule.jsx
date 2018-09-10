@@ -22,7 +22,7 @@ class Yule extends React.Component{
         this.props.fetchPosts();
     }
     componentWillReceiveProps(nextProps){
-      if (nextProps.newPost) {
+      if (nextProps.newPost != this.props.newPost) {
         this.props.posts.unshift(nextProps.newPost);
         console.log(nextProps.newPost + "收到数据,推入数组1")
       }

@@ -26,6 +26,7 @@ class Login extends React.Component{
                             localStorage.setItem("remember","TRUE")
                         }
                         window.location.href="/"
+                        // this.props.history.push('/');
                         //  this.props.login();
                         sessionStorage.logined = "Y";
                         sessionStorage.userName = userName;

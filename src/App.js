@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Link ,NavLink} from "react-router-dom";
+import { Router, Link ,NavLink} from "react-router-dom";
 // import logo from './logo.svg';
 // import scssObj from "./App.scss";
 import Route from 'react-router-dom/Route';
@@ -7,7 +7,7 @@ import Route from 'react-router-dom/Route';
 import  { Provider } from 'react-redux';
 import store from './store.js'
 
-
+import history  from './history.js';
 import { Redirect } from 'react-router-dom';
 
 import Header from './components/index/header.jsx'
@@ -24,6 +24,9 @@ import Yule from './components/classify/yule.jsx'
 import Aihao from './components/classify/aihao.jsx'
 import Qita from './components/classify/qita.jsx'
 import Person from './components/user/person.jsx'
+import Help from './components/user/help.jsx'
+import Message from './components/user/message.jsx'
+import Set from './components/user/set.jsx'
  
 
 class App extends Component {
@@ -35,6 +38,7 @@ class App extends Component {
   // }
   
   render() {
+   
     return (
       // <div className="App">
       //   <header className="App-header">
@@ -45,9 +49,10 @@ class App extends Component {
       //     To get started, edit <code>src/App.js</code> and save to reload.
       //   </p>
       // </div>
+      
       <Provider store={store}>    
     
-      <BrowserRouter>
+      <Router history={history}>
         <div>
             <Header></Header>
             
@@ -72,12 +77,17 @@ class App extends Component {
            <Route path="/aihao" component={Aihao} />    
            <Route path="/qita" component={Qita} />    
            <Route path="/person" component={Person} />    
+
+           <Route path="/message" component={Message} />    
+           <Route path="/set" component={Set} />    
+           <Route path="/help" component={Help} />    
+
            {/* <Redirect path="/" to={{pathname: '/'}} /> */}
 
 
            <Footer></Footer>
         </div>
-      </BrowserRouter>
+      </Router>
      </Provider>
     );
   }

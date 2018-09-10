@@ -303,7 +303,33 @@
         }
     }
 }
-.personPage{
+.person{
+    margin-top: 100px;
+    // width: 600px;
+    height: 500px;
+    background-color: #fff;
+    padding: 0 42px 30px 42px!important;
+    h3{
+        height: 90px;
+        line-height: 90px;
+        border-bottom:1px solid #e0e0e0;;
+    }
+    .item{
+        padding-top: 10px;
+        ul{
+            float: left;
+        }
+        li{
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        .head{
+            float: left;
+            height: 150px;
+            width: 150px;
+            
+        }
+    }
     
 }
 

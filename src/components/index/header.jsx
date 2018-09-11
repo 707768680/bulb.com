@@ -124,7 +124,7 @@ class Home extends React.Component {
                       <Link className="dropdown-item" to="/person">个人空间</Link>
                       <Link className="dropdown-item" to="/message">消息</Link>
                       <Link className="dropdown-item" to="/set">账号设置</Link>
-                      <Link className="dropdown-item" to="/help">反馈</Link>                     
+                      <Link className="dropdown-item" to="/help">帮助与反馈</Link>                     
                       <a className="dropdown-item" id="exit" onClick={this.exitlogin}>退出登录</a>                     
                     </div>
                   </div>

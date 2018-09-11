@@ -5,8 +5,26 @@ import {Link} from "react-router-dom"
 class Person extends Component {
   constructor(props){
     super(props)
+    this.state = {
+      items:[
+        { id:"",
+        username:"",
+        name:"",
+        email:"",
+        phone:"",
+        address:{
+          city:""
+        },
+        company:{
+          name:""
+        }
+      }
+
+      ]
+    }
+    
   }
-  componentDidMount(){
+  componentDidMount = () => {
     fetch("https://jsonplaceholder.typicode.com/users", {
       method: "GET",
       headers: {
@@ -15,7 +33,8 @@ class Person extends Component {
       }
     })
   .then(response => response.json())
-  .then(json => console.log(json))
+  // this.setState({items:json})
+  .then(json => this.setState({items:json}))
   }
   render(){
     return(
@@ -25,11 +44,11 @@ class Person extends Component {
           <div className="row">
             <div className="col-3">
             <div className= {scssObj.classlist + " list-group"}>
-              <Link to="/keji" className="list-group-item list-group-item-action active">个人资料</Link>
-              <Link to="/shenghuo" className="list-group-item list-group-item-action">我的灯友</Link>
-              <Link to="/aihao" className="list-group-item list-group-item-action">我的群组</Link>
-              <Link to="/yule" className="list-group-item list-group-item-action">我参与的</Link>
-              <Link to="/aihao" className="list-group-item list-group-item-action">我关注的</Link>
+              <Link to="/person" className="list-group-item list-group-item-action active">个人资料</Link>
+              <Link to="/friends" className="list-group-item list-group-item-action">我的灯友</Link>
+              <Link to="/group" className="list-group-item list-group-item-action">我的群组</Link>
+              <Link to="/takein" className="list-group-item list-group-item-action">我参与的</Link>
+              <Link to="/follow" className="list-group-item list-group-item-action">我关注的</Link>
             </div> 
             </div>    
         
@@ -39,13 +58,13 @@ class Person extends Component {
                 <div className={scssObj.item}>
                 <div className={scssObj.head}>头像</div>
                   <ul>
-                    <li>ID:</li>
-                    <li>昵称:</li>
-                    <li>实名:</li>
-                    <li>email:</li>
-                    <li>地区:</li>
-                    <li>电话:</li>
-                    <li>公司:</li>
+                    <li>ID:<span>{this.state.items[0].id}</span></li>
+                    <li>昵称:<span>{this.state.items[0].username}</span></li>
+                    <li>实名:<span>{this.state.items[0].name}</span></li>
+                    <li>email:<span>{this.state.items[0].email}</span></li>
+                    <li>地区:<span>{this.state.items[0].address.city}</span></li>
+                    <li>电话:<span>{this.state.items[0].phone}</span></li>
+                    <li>公司:<span>{this.state.items[0].company.name}</span></li>
                   </ul>
                 </div>
               </div>

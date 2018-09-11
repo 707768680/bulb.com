@@ -14,7 +14,6 @@ import Header from './components/index/header.jsx'
 import Content from './components/index/content.jsx'
 import Footer from './components/index/footer.jsx'
 import Rank from './components/rank/rank.jsx'
-import Friends from './components/user/friends.jsx'
 import Login from './components/user/login.jsx'
 import Register from './components/user/register.jsx'
 import Start from './components/trip/start.jsx'
@@ -27,7 +26,12 @@ import Person from './components/user/person.jsx'
 import Help from './components/user/help.jsx'
 import Message from './components/user/message.jsx'
 import Set from './components/user/set.jsx'
+import Group from './components/user/personl/group.jsx'
+import Follow from './components/user/personl/follow.jsx'
+import Friends from './components/user/personl/friends.jsx'
+import Takein from './components/user/personl/takein.jsx'
  
+
 
 class App extends Component {
   // constructor(){
@@ -66,7 +70,7 @@ class App extends Component {
 
            <Route exact path="/" component={Content}  />
            <Route path="/rank" component={Rank}  /> 
-           <Route path="/friends" component={Friends} />          
+           {/* <Route path="/friends" component={Friends} />           */}
            <Route path="/login" component={Login} />          
            <Route path="/register" component={Register} />    
            <Route path="/start" component={Start} />   
@@ -75,12 +79,18 @@ class App extends Component {
            <Route path="/shenghuo" component={Shenghuo} />    
            <Route path="/yule" component={Yule} />    
            <Route path="/aihao" component={Aihao} />    
-           <Route path="/qita" component={Qita} />    
-           <Route path="/person" component={Person} />    
+           <Route path="/qita" component={Qita} />  
 
+           <Route path="/person" component={Person} />    
            <Route path="/message" component={Message} />    
            <Route path="/set" component={Set} />    
            <Route path="/help" component={Help} />    
+           
+           <Route path="/group" component={Group} />    
+           <Route path="/friends" component={Friends} />    
+           <Route path="/follow" component={Follow} />    
+           <Route path="/takein" component={Takein} />    
+
 
            {/* <Redirect path="/" to={{pathname: '/'}} /> */}
 

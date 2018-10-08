@@ -32,18 +32,23 @@ class Login extends React.Component{
                         sessionStorage.userName = userName;
                         sessionStorage.userPsd = userPsd;
                         this.clear();
+                        k = 1
+                        break
                        }else{
                            alert("密码错误");
                            this.clear();
                        }
-                    }else{
-                        alert("用户名错误");
-                        this.clear();
                     }
+                    // else{
+                    //     alert("用户名错误");
+                    //     this.clear();
+                    // }
                 }
-            }else{
-                alert("用户名不存在")
-                this.clear();
+                if(k == 0){
+                    alert("用户名不存在")
+                    this.clear();
+                }
+                
             }
         }
         
